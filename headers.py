@@ -14,8 +14,10 @@ def get_headers(req):
 firefox_options = webdriver.FirefoxOptions()
 driver = webdriver.Firefox(options=firefox_options)
 driver.request_interceptor =get_headers
-
-os.remove('headers.json')
+try:
+    os.remove('headers.json')
+except:
+    pass
 driver.get('https://www.cinesa.es/cines/oasiz/')
 time.sleep(10)
 driver.quit()
